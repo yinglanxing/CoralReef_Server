@@ -2,7 +2,7 @@ import json
 import logging.config
 import os
 
-from core.config import settings
+from config import settings
 
 path = settings.LOGGING_CONFIG_FILE
 if os.path.exists(path):

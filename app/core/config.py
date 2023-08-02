@@ -2,20 +2,24 @@ import os.path
 import secrets
 from typing import List, Optional, Union
 
-import constants
+# pydantic 团队你没事吧, 为什么要把env_file_sentinel放到v1里面去了???????????
+# 害的老子找了一下午的bug（*尖叫，扭曲，阴暗的爬行
+from pydantic.v1.env_settings import env_file_sentinel
 
-import pydantic_settings as BaseSettings
+from app.core import constants
+
 from pydantic import AnyHttpUrl, IPvAnyAddress, FilePath
-from pydantic.env_settings import env_file_sentinel
+
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str  # 项目名称 必填
+    PROJECT_NAME: str = "keluo_server"  # 项目名称 必填
     PROJECT_DESCRIPTION: str = "科洛系统服务端"  # 项目描述
     PROJECT_VERSION: str = "0.0.1"  # 项目版本
     SECRET_KEY: str = secrets.token_urlsafe(
         32)  # 登录状态token加密key, 不在配置中固定一个字符会每次运行随机生成一个导致每次重启程序都会登录过期，建议.env中配置一个固定的字符串
-    LOGGING_CONFIG_FILE: FilePath = os.path.join(constants.BASE_DIR, 'configs/logging_config.json')  # log格式配置文件路径
+    # LOGGING_CONFIG_FILE: FilePath = os.path.join(constants.BASE_DIR, 'configs/logging_config.json')  # log格式配置文件路径
     ECHO_SQL: bool = False  # 是否打印sql语句
     AUTO_ADD_PERM_LABEL: bool = False  # 是否在访问到有权限标识的路径的时候自动添加权限标识到数据库
 
@@ -27,21 +31,28 @@ class Settings(BaseSettings):
 
     # jwt加密算法
     JWT_ALGORITHM: str = "HS256"
+    # jwt过期时间
+    JWT_EXPIRE: int = 60 * 24 * 7  # 7天
+    # jwt刷新token过期时间
+    JWT_REFRESH_EXPIRE: int = 60 * 24 * 30  # 30天
 
     # FastAPI (Only takes effect in run "python main.py". Don't want to take effect when running with
     # "uvicorn/gunicorn main:app")
-    HOST: IPvAnyAddress = "0.0.0.0"  # 允许访问程序的ip， 只允许本地访问使用 127.0.0.1， 只在直接允许程序时候生效
+
+    HOST: str = "127.0.0.1"  # 允许访问程序的ip， 只允许本地访问使用 127.0.0.1， 只在直接允许程序时候生效
     PORT: int = 9898  # 程序端口，只在直接运行程序的时候生效
-    RELOAD: bool = True  # 是否自动重启，只在直接运行程序时候生效
+    RELOAD: bool = True  # 是否打开热重载
 
     # sql db
-    SQL_USERNAME: str  # 关系型数据库用户名
+    SQL_USERNAME: str = "fastapi"  # 关系型数据库用户名
     SQL_PASSWORD: Optional[str] = None  # 关系型数据库用户密码
     SQL_HOST: Union[AnyHttpUrl, IPvAnyAddress] = "127.0.0.1"  # 关系型数据库HOST地址
     SQL_PORT: int = 3306  # 关系型数据库端口
-    SQL_DATABASE: str  # 关系型数据库数据库名
+    SQL_DATABASE: str = "fastapi"  # 关系型数据库数据库名
     SQL_TABLE_PREFIX: Optional[str] = 't_'  # 数据库表前缀， 不需要前缀可以置空
-    SQLALCHEMY_ENGINE: str = 'mysql+pymysql'  # SQL引擎，修改此处可以快速改变SQL数据库(默认：mysql   可以是其他数据库如 postgresSQL(postgres)  Oracle(oracle+cx_oracle)
+    SQLALCHEMY_ENGINE: str = 'mysql+pymysql'  # SQL引擎，修改此处可以快速改变SQL数据库(默认：mysql 可以是其他数据库如 postgresSQL(postgres)
+
+    # Oracle(oracle+cx_oracle)
 
     def getSqlalchemyURL(self):
         """
@@ -51,7 +62,7 @@ class Settings(BaseSettings):
         return f"{self.SQLALCHEMY_ENGINE}://{user}@{self.SQL_HOST}:{self.SQL_PORT}/{self.SQL_DATABASE}"
 
     # redis
-    REDIS_HOST: str  # Redis Host地址
+    REDIS_HOST: str = "127.0.0.1"  # Redis Host地址
     REDIS_PASSWORD: Optional[str] = None  # Redis 密码
     REDIS_DB: int = 0  # 选择Redis数据库
     REDIS_PORT: int = 6379  # Redis端口
@@ -74,7 +85,7 @@ class Settings(BaseSettings):
     SMTP_USER: Optional[str] = ""  # SMTP用户名
     SMTP_PASSWORD: Optional[str] = ""  # SMTP密码
     EMAIL_FROM_EMAIL: Optional[str] = ""  # 发件人邮箱
-    EMAIL_TEMPLATES_DIR: str = "./email-templates/"  # 模板路径
+    EMAIL_TEMPLATES_DIR: str = "./html-template/email-templates/"  # 模板路径
 
     class Config:
         env_file = ".env"
