@@ -2,12 +2,12 @@ import os.path
 import secrets
 from typing import List, Optional, Union
 
+from app.core import constants
+
+
 # pydantic 团队你没事吧, 为什么要把env_file_sentinel放到v1里面去了???????????
 # 害的老子找了一下午的bug（*尖叫，扭曲，阴暗的爬行
 from pydantic.v1.env_settings import env_file_sentinel
-
-from app.core import constants
-
 from pydantic import AnyHttpUrl, IPvAnyAddress, FilePath
 
 from pydantic_settings import BaseSettings

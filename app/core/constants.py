@@ -28,5 +28,5 @@ REDIS_KEY_USER_REGISTER_NUM_OF_TIME = "user_register_time_num_IP_"
 REDIS_KEY_USER_FORGET_PWD_NUM_OF_TIME = "user_forget_pwd_time_num_EMAIL_"
 REDIS_KEY_USER_PERM_LABEL_CACHE = "user_perm_label_cache_"
 
-MEDIA_BASE_PATH = os.path.join(BASE_DIR, 'media/')
+MEDIA_BASE_PATH = os.path.join(BASE_DIR, '../media')
 MEDIA_AVATAR_BASE_DIR = "images/avatar/"
