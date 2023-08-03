@@ -2,8 +2,10 @@ import os
 from datetime import timedelta
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), '..'))
+
+
 DEFAULT_ENV_FILE = os.path.abspath(os.path.join(BASE_DIR,
-                                                "./configs/.env"))  # default env file path: './configs/.env' when
+                                                "../configs/.env"))  # default env file path: '../configs/.env' when
 # run "python main.py", you can change in this if you want
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30

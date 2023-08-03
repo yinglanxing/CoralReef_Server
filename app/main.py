@@ -46,5 +46,5 @@ if __name__ == '__main__':
         host=str(settings.HOST),
         port=settings.PORT,
         reload=settings.RELOAD,
-        log_config=str(settings.LOGGING_CONFIG_FILE)
+        log_config=str(settings.LOGGING_CONFIG_FILE)  # 日志配置文件,如不需要日志可注释掉
     )

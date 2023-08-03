@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     PROJECT_VERSION: str = "0.0.1"  # 项目版本
     SECRET_KEY: str = secrets.token_urlsafe(
         32)  # 登录状态token加密key, 不在配置中固定一个字符会每次运行随机生成一个导致每次重启程序都会登录过期，建议.env中配置一个固定的字符串
-    # LOGGING_CONFIG_FILE: FilePath = os.path.join(constants.BASE_DIR, 'configs/logging_config.json')  # log格式配置文件路径
+    LOGGING_CONFIG_FILE: FilePath = os.path.join(constants.BASE_DIR, 'configs/logging_config.json')  # log格式配置文件路径
     ECHO_SQL: bool = False  # 是否打印sql语句
     AUTO_ADD_PERM_LABEL: bool = False  # 是否在访问到有权限标识的路径的时候自动添加权限标识到数据库
 
@@ -88,10 +88,11 @@ class Settings(BaseSettings):
     EMAIL_TEMPLATES_DIR: str = "./html-template/email-templates/"  # 模板路径
 
     class Config:
-        env_file = ".env"
+        env_file = "../configs/.env"
 
 
 settings = Settings(
+    # 待修复 .env文件无法被pydantic解析
     _env_file=constants.DEFAULT_ENV_FILE if os.path.exists(constants.DEFAULT_ENV_FILE) else env_file_sentinel,
     _env_file_encoding='utf-8'
 )
