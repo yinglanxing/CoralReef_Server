@@ -4,6 +4,8 @@ from typing import List, Optional, Union
 
 from app.core import constants
 
+# pydantic env解析有问题，未来将会使用其他env解析库替代pydantic
+# 2023/8/4 —— 楹蓝
 
 # pydantic 团队你没事吧, 为什么要把env_file_sentinel放到v1里面去了???????????
 # 害的老子找了一下午的bug（*尖叫，扭曲，阴暗的爬行
@@ -64,7 +66,7 @@ class Settings(BaseSettings):
     # redis
     REDIS_HOST: str = "127.0.0.1"  # Redis Host地址
     REDIS_PASSWORD: Optional[str] = None  # Redis 密码
-    REDIS_DB: int = 0  # 选择Redis数据库
+    # REDIS_DB: int = 0  # 选择Redis数据库
     REDIS_PORT: int = 6379  # Redis端口
 
     def getRedisURL(self):
@@ -75,6 +77,7 @@ class Settings(BaseSettings):
         return f"redis://{pwd}{self.REDIS_HOST}:{self.REDIS_PORT}/{self.REDIS_DB}?encoding=utf-8"
 
     # celery
+
     CELERY_BROKER: str = 'redis://127.0.0.1:6379/2'
     CELERY_BACKEND: str = 'redis://127.0.0.1:6379/3'
 
@@ -92,7 +95,7 @@ class Settings(BaseSettings):
 
 
 settings = Settings(
-    # 待修复 .env文件无法被pydantic解析
+    # 待修复 .env文件无法被pydantic解析 2023/8/3 - 楹蓝
     _env_file=constants.DEFAULT_ENV_FILE if os.path.exists(constants.DEFAULT_ENV_FILE) else env_file_sentinel,
     _env_file_encoding='utf-8'
 )

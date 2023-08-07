@@ -1,0 +1,4 @@
+WARNING 2023-08-07 10:21:24 WatchFiles detected changes in 'db\base_class.py', 'api_router\user\models\user_module.py', 'utils\transform.py', 'api_router\user\curd\__init__.py', 'common\curd_base.py'. Reloading...
+INFO 2023-08-07 10:21:26 Started server process [29176]
+INFO 2023-08-07 10:21:26 Waiting for application startup.
+INFO 2023-08-07 10:21:26 Application startup complete.

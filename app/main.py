@@ -1,8 +1,15 @@
 from fastapi import FastAPI, APIRouter
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
-
+# 导入路由模块
 from app import api_router as route_module
+# 导入异常处理模块
+from app.common.exceptions import customExceptions
+
+# 上游aioredis库存在基类重复继承问题，故暂时停用此模块。
+# 等待上游修复后再启用。
+# from app.db.cache import registerRedis
+
 from core.config import settings
 
 
@@ -22,10 +29,11 @@ def createApp():
     # allow cross domain
     app.add_middleware(CORSMiddleware, allow_origins=settings.BACKEND_CORS_ORIGINS,
                        allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
-    # set redis
+    # 注册 redis 缓存池模块
     # registerRedis(app)
-    # set custom exceptions
-    # customExceptions(app)
+
+    # 注册异常处理模块
+    customExceptions(app)
     # # print all path
     # for _route in app.routes:
     #     r = _route.__dict__

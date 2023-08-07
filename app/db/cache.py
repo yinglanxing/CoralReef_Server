@@ -8,6 +8,8 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
+# 上游aioredis库存在基类重复继承问题，暂时停用此模块。
+# 等待上游修复后再启用。
 def registerRedis(app: FastAPI) -> None:
     """
     把redis挂载到app对象上面, 异步redis

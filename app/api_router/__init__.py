@@ -3,6 +3,7 @@ from fastapi.routing import APIRouter
 from .permission import permission_api
 from .system import system_api
 from .user import user_api
+from .posts import posts_api
 
 api_router = APIRouter()
 
@@ -17,6 +18,9 @@ api_router.include_router(system_api, prefix="/system")
 
 # 权限路由
 api_router.include_router(permission_api, prefix="/permission")
+
+# 文章路由
+api_router.include_router(posts_api, prefix="/posts")
 
 # 导出全部路由
 __all__ = ['api_router']
