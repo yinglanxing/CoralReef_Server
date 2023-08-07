@@ -1,0 +1,46 @@
+WARNING 2023-08-07 10:21:24 WatchFiles detected changes in 'db\base_class.py', 'api_router\user\models\user_module.py', 'utils\transform.py', 'api_router\user\curd\__init__.py', 'common\curd_base.py'. Reloading...
+INFO 2023-08-07 10:21:26 Started server process [29176]
+INFO 2023-08-07 10:21:26 Waiting for application startup.
+INFO 2023-08-07 10:21:26 Application startup complete.
+INFO 2023-08-17 13:52:12 Will watch for changes in these directories: ['C:\\Users\\yinglan\\PycharmProjects\\CoralReef_Server\\app']
+INFO 2023-08-17 13:52:12 Uvicorn running on http://127.0.0.1:9898 (Press CTRL+C to quit)
+INFO 2023-08-17 13:52:12 Started reloader process [4680] using WatchFiles
+INFO 2023-08-17 13:52:13 Started server process [30440]
+INFO 2023-08-17 13:52:13 Waiting for application startup.
+INFO 2023-08-17 13:52:13 Application startup complete.
+INFO 2023-08-17 13:56:13 Shutting down
+INFO 2023-08-17 13:56:13 Stopping reloader process [4680]
+INFO 2023-08-17 14:50:45 Will watch for changes in these directories: ['C:\\Users\\yinglan\\PycharmProjects\\CoralReef_Server\\app']
+INFO 2023-08-17 14:50:45 Uvicorn running on http://127.0.0.1:9898 (Press CTRL+C to quit)
+INFO 2023-08-17 14:50:45 Started reloader process [26284] using WatchFiles
+INFO 2023-08-17 14:50:46 Started server process [30068]
+INFO 2023-08-17 14:50:46 Waiting for application startup.
+INFO 2023-08-17 14:50:46 Application startup complete.
+WARNING 2023-08-17 14:54:06 WatchFiles detected changes in 'configs\development.py'. Reloading...
+INFO 2023-08-17 14:54:07 Started server process [27340]
+INFO 2023-08-17 14:54:07 Waiting for application startup.
+INFO 2023-08-17 14:54:07 Application startup complete.
+WARNING 2023-08-17 14:54:33 WatchFiles detected changes in 'configs\production.py'. Reloading...
+INFO 2023-08-17 14:54:34 Started server process [28484]
+INFO 2023-08-17 14:54:34 Waiting for application startup.
+INFO 2023-08-17 14:54:34 Application startup complete.
+WARNING 2023-08-17 14:54:45 WatchFiles detected changes in 'configs\development.py', 'configs\production.py'. Reloading...
+INFO 2023-08-17 14:54:46 Started server process [936]
+INFO 2023-08-17 14:54:46 Waiting for application startup.
+INFO 2023-08-17 14:54:46 Application startup complete.
+WARNING 2023-08-17 14:55:48 WatchFiles detected changes in 'configs\settings.py'. Reloading...
+INFO 2023-08-17 14:55:49 Started server process [12252]
+INFO 2023-08-17 14:55:49 Waiting for application startup.
+INFO 2023-08-17 14:55:49 Application startup complete.
+WARNING 2023-08-17 14:55:50 WatchFiles detected changes in 'configs\settings.py'. Reloading...
+INFO 2023-08-17 14:55:51 Started server process [25812]
+INFO 2023-08-17 14:55:51 Waiting for application startup.
+INFO 2023-08-17 14:55:51 Application startup complete.
+WARNING 2023-08-17 14:56:36 WatchFiles detected changes in 'configs\__init__.py', 'configs\config.py', 'core\config.py'. Reloading...
+WARNING 2023-08-17 14:57:13 WatchFiles detected changes in 'db\base_class.py', 'core\logger.py', 'core\__init__.py', 'configs\config.py', 'db\cache.py', 'main.py'. Reloading...
+WARNING 2023-08-17 14:57:56 WatchFiles detected changes in 'configs\production.py'. Reloading...
+WARNING 2023-08-17 14:58:11 WatchFiles detected changes in 'configs\development.py'. Reloading...
+WARNING 2023-08-17 14:58:32 WatchFiles detected changes in 'configs\development.py', 'configs\production.py'. Reloading...
+WARNING 2023-08-17 14:58:54 WatchFiles detected changes in 'configs\settings.py'. Reloading...
+WARNING 2023-08-17 15:01:10 WatchFiles detected changes in 'db\base_class.py', 'core\logger.py', 'configs\config.py', 'db\cache.py', 'common\resp.py', 'core\__init__.py', 'main.py'. Reloading...
+INFO 2023-08-17 15:02:05 Stopping reloader process [26284]
